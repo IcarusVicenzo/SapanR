@@ -153,3 +153,6 @@ cat("After modification, J.K. Rowling is ranked 15th with an annual pay of $90 m
 cat("The data reveals significant disparities in earnings among top celebrities,\n")
 cat("with film directors and media personalities generally commanding higher pay\n")
 cat("compared to some musicians and athletes.\n")
+
+install.packages("usethis")
+usethis::use_git_config(user.name="Leorenze Marc Sapan", user.email = "leornezemarc.sapan@students.isatu.edu.ph")

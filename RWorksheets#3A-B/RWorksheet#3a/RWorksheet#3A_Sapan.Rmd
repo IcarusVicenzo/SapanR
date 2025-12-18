@@ -1,0 +1,134 @@
+---
+title: "Rworksheet#3A_Sapan.rmd"
+author: "Leorenze Marc Sapan"
+date: "2025-10-13"
+output: pdf_document
+---
+
+```r
+
+# USING VECTORS
+# 1a
+  
+LETTERS[1:11]
+
+# 1b
+
+LETTERS[seq(1, 26, by = 2)]
+
+# 1c
+
+LETTERS[c(1, 5, 9, 15, 21)]
+
+# 1d
+
+letters[22:26]
+
+# 1e
+
+letters[15:24]
+
+
+# USING DATA FRAMES (Temperatures)
+
+# 2a
+
+city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+city
+
+# 2b
+
+temp <- c(42, 39, 34, 34, 30, 27)
+temp
+
+# 2c
+
+df <- data.frame(city, temp)
+df
+
+# 2d
+
+names(df) <- c("City", "Temperature")
+df
+
+# 2e
+
+str(df)
+
+# 2f
+
+df[3:4, ]
+
+# 2g
+
+df[which.max(df$Temperature), ]
+df[which.min(df$Temperature), ]
+
+
+
+# USING MATRICES
+
+# 2a.)
+
+matrix_values <- c(1:8, 11:14)
+mat <- matrix(matrix_values, ncol = 4, nrow = 3)
+mat
+
+# 2b.)
+
+mat2 <- mat * 2
+mat2
+
+# 2c.)
+
+mat[2, ]
+
+# 2d.)
+
+mat[1:2, 3:4]
+
+# 2e.)
+
+mat[3, 2:3]
+
+# 3f
+
+mat[, 4]
+
+# 2g.)
+
+rownames(mat2) <- c("isa", "dalawa", "tatlo")
+colnames(mat2) <- c("uno", "dos", "tres", "quatro")
+mat2
+
+# 2h.)
+
+dim(mat) <- c(6, 2)
+mat
+
+
+
+# USING ARRAYS
+
+# 3a.)
+
+arr_values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+my_array <- array(rep(arr_values, 2), dim = c(2, 4, 3))
+my_array
+
+
+# 3b.)
+
+dim(my_array)
+length(dim(my_array))
+
+
+# 3c.)
+
+rownames(my_array) <- letters[1:2]
+colnames(my_array) <- LETTERS[1:4]
+dimnames(my_array)[[3]] <- c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array")
+my_array
+
+
+```

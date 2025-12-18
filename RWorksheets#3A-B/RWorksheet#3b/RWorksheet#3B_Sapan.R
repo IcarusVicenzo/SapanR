@@ -1,0 +1,103 @@
+# ==========================
+# 1. CREATE DATA FRAME
+# ==========================
+
+#1a
+respondents <- data.frame(
+  Name = c("John", "Mary", "Alice", "Bob", "Eve"),
+  Sex = c("Male", "Female", "Female", "Male", "Female"),
+  Siblings = c(4, 5, 6, 3, 5),
+  Houses = c("Wood", "Concrete", "Semi-Concrete", "Wood", "Concrete"),
+  Fathers_Occupation = c("Farmer", "Driver", "Farmer", "Others", "Farmer"),
+  stringsAsFactors = FALSE
+)
+respondents
+
+#1b
+str(respondents)
+summary(respondents)
+
+#1c
+mean_siblings <- mean(respondents$Siblings)
+mean_siblings
+mean_siblings == 5
+
+#1d
+respondents[1:2, ]
+
+#1e
+respondents[c(3,5), c(2,4)]
+
+#1f
+types_houses <- respondents$Houses
+types_houses
+
+#1g
+respondents[respondents$Sex == "Male" & respondents$Fathers_Occupation == "Farmer", ]
+
+#1h
+respondents[respondents$Sex == "Female" & respondents$Siblings >= 5, ]
+
+
+# ==========================
+# 2. EMPTY DATA FRAME
+# ==========================
+
+#2
+df <- data.frame(
+  Ints = integer(),
+  Doubles = double(),
+  Characters = character(),
+  Logicals = logical(),
+  Factors = factor(),
+  stringsAsFactors = FALSE
+)
+print("Structure of the empty dataframe:")
+str(df)
+
+
+# ==========================
+# 3. CSV FILE OPERATIONS
+# ==========================
+
+#3a. Save CSV
+write.csv(respondents, "HouseholdData.csv", row.names = FALSE)
+
+#3b. Import CSV
+household <- read.csv("HouseholdData.csv", stringsAsFactors = FALSE)
+household
+
+#3c. Convert Sex to factor and integer (Male=1, Female=2)
+household$Sex <- factor(household$Sex, levels = c("Male", "Female"))
+household$Sex_int <- as.integer(household$Sex)
+household
+
+#3d. Convert Houses to factor and integer (Wood=1, Concrete=2, Semi-Concrete=3)
+household$Houses <- factor(household$Houses, levels = c("Wood", "Concrete", "Semi-Concrete"))
+household$Houses_int <- as.integer(household$Houses)
+household
+
+#3e. Factor Fathers_Occupation (Farmer=1, Driver=2, Others=3)
+household$Fathers_Occupation <- factor(household$Fathers_Occupation, levels = c("Farmer", "Driver", "Others"))
+household$Fathers_Occupation_int <- as.integer(household$Fathers_Occupation)
+household
+
+#3f. Select females with father occupation Driver
+household[household$Sex == "Female" & household$Fathers_Occupation == "Driver", ]
+
+#3g. Select respondents with >=5 siblings
+household[household$Siblings >= 5, ]
+
+
+# ==========================
+# 4. GRAPH INTERPRETATION
+# ==========================
+
+#The graph illustrates people’s emotions on Twitter from July 14 to July 21, 2020. Negative 
+#tweets (red bars) are the most frequent on most days, showing that many users expressed 
+#negative feelings. Neutral tweets (orange bars) appear in moderate numbers, indicating posts 
+#that were neither positive nor negative. Positive tweets (blue bars) are generally the fewest, 
+#suggesting limited expressions of happiness. The largest spikes in negative tweets occur on 
+#July 15 and July 21, meaning users were especially unhappy on those days. Overall, negative 
+#sentiments dominated the week, followed by neutral, with positive tweets being the least 
+#common.
